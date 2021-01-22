@@ -1,0 +1,27 @@
+version: '3.1'
+services:
+
+  ### Using Mongo 3.6 to keep compatibility with AWS DocumentDB and Azure CosmosDB
+  mongo:
+    image: mongo:3.6.21
+    ports: [ "27019:27017" ]
+    networks: [ delivery-net ]
+    command: --logpath=/dev/null
+    environment:
+      TZ: America/Sao_Paulo
+
+  delivery-much:
+    image: node:14.15.3-alpine
+    working_dir: "/usr/current/app"
+    command: ./start.sh
+    env_file: .env
+    volumes:
+      - .:/usr/current/app:rw
+    ports: [ "3000:3000", "9229:9229"]
+    networks: [ delivery-net ]
+    links: [ mongo ]
+    depends_on: [ mongo ]
+
+networks:
+    delivery-net:
+      external: true
