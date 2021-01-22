@@ -34,7 +34,7 @@ class App {
   }
 
   loadRoutes(): void {
-    this.app.use('/v1', new RoutesV1().getRouter())
+    this.app.use('/', new RoutesV1().getRouter())
   }
 
   initSwagger(): void {
