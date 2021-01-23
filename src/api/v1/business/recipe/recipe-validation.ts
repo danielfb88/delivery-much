@@ -9,7 +9,7 @@ export const getRecipeValidation = [
 
     const listIngredients: String[] = value.split(',')
 
-    if (listIngredients.length >= 3) {
+    if (listIngredients.length > 3) {
       throw new IngredientError('Maximun 3 ingredients')
     }
 
