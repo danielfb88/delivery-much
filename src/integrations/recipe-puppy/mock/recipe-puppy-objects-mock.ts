@@ -1,6 +1,8 @@
 import faker from 'faker'
 import { IRecipePuppyResponse } from '../recipe-puppy-integration-types'
 
+export const INGREDIENT_LIST_MOCK = 'onion,tomato,chili'
+
 function getIngredientsMock(n: number): string[] {
   const listIngredients: string[] = []
 

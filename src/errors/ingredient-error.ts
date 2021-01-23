@@ -13,6 +13,6 @@ export class IngredientError extends CustomError {
   }
 
   serializeErrors(): IError[] {
-    return [{ message: this.customMessage ?? '' }]
+    return [{ message: this.customMessage ?? 'Invalid ingredients input' }]
   }
 }
