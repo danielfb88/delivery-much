@@ -1,8 +1,11 @@
-export interface INewProperty {
-  address: string
-  landlord_id: string
+export interface IRecipe {
+  title: string
+  ingredients: string[]
+  link: string
+  gif: string
 }
 
-export interface IProperty extends INewProperty {
-  id?: string
+export interface IRecipeResponse {
+  keywords: string[]
+  recipes: IRecipe[]
 }
