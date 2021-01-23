@@ -15,7 +15,7 @@ describe('Get recipe integration tests', () => {
 
     describe('Check inputs', () => {
       test('Should get recipes', async done => {
-        const res = await request(app).get(`${endpoint}/?i=onion,tomato`).send()
+        const res = await request(app).get(`${endpoint}/?i=onion,tomato,chili`).send()
 
         expect(res.status).toBe(HTTPStatus.OK)
 

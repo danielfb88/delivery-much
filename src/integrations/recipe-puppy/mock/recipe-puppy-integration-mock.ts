@@ -8,6 +8,6 @@ export class RecipePuppyIntegrationMock implements IMockIntegration {
     const mockAdapter = new MockAdapter(axiosInstance)
 
     /* Get Recipes */
-    mockAdapter.onGet('/').reply(200, getRecipePupyResponseMock())
+    mockAdapter.onGet('/?i=onion,tomato').reply(200, getRecipePupyResponseMock())
   }
 }
