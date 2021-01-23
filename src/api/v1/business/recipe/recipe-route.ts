@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { getRecipeValidation } from './property-validation'
 import RecipeController from './recipe-controller'
+import { getRecipeValidation } from './recipe-validation'
 
 export function initRecipeRoutes(): Router {
   const controller = new RecipeController()

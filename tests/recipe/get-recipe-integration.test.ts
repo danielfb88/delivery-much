@@ -13,12 +13,30 @@ describe('Get recipe integration tests', () => {
   describe('GET /recipes', () => {
     const endpoint = '/recipes'
 
-    test('Should get recipes', async done => {
-      const res = await request(app).get(`${endpoint}/i=onion,tomato`).send()
+    describe('Check inputs', () => {
+      test('Should get recipes', async done => {
+        const res = await request(app).get(`${endpoint}/?i=onion,tomato`).send()
 
-      expect(res.status).toBe(HTTPStatus.OK)
+        expect(res.status).toBe(HTTPStatus.OK)
 
-      done()
+        done()
+      })
+
+      test('Should get BAD_REQUEST if more than three ingredients', async done => {
+        const res = await request(app).get(`${endpoint}/?i=onion,tomato,salt,chili`).send()
+
+        expect(res.status).toBe(HTTPStatus.BAD_REQUEST)
+
+        done()
+      })
+
+      test('Should get BAD_REQUEST with no ingredients', async done => {
+        const res = await request(app).get(`${endpoint}/?i=`).send()
+
+        expect(res.status).toBe(HTTPStatus.BAD_REQUEST)
+
+        done()
+      })
     })
   })
 })

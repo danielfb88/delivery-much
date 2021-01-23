@@ -9,8 +9,9 @@
     "test": "jest --setupFiles dotenv/config -w9 --detectOpenHandles",
     "eslint:fix": "eslint --fix '**/*.{t,j}s'",
     "eslint:check": "eslint '**/*.{t,j}s'",
-    "docker:test": "docker-compose run --rm --service-ports delivery-much npm run test",
-    "docker:dev": "docker-compose run --rm --service-ports delivery-much npm run dev"
+    "docker:dev": "docker-compose run --rm --service-ports delivery-much npm run dev",
+    "mongo:start": "docker run -p 27017:27017 --name mongodb -e AUTH=no -d mongo",
+    "mongo:down": "docker stop mongodb && docker rm mongodb"
   },
   "repository": {
     "type": "git",

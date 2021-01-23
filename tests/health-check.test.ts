@@ -5,7 +5,7 @@ import './helpers'
 const request = supertest
 
 describe('Health check test', () => {
-  const endpoint = '/v1/health'
+  const endpoint = '/health'
 
   test('Should health check api', async done => {
     const res = await request(app).get(endpoint)
