@@ -1,6 +1,6 @@
 import { BaseIntegration } from '../../base/base-integration'
-import { UnavailableServiceError } from '../../errors/unavailable-service-error'
 import { MOCK_INTEGRATIONS } from '../integrations.config'
+import { RecipePuppyUnavailableServiceError } from './errors/giphy-unavailable-service-error'
 import { RecipePuppyIntegrationMock } from './mock/recipe-puppy-integration-mock'
 import { IRecipePuppyResponse } from './recipe-puppy-integration-types'
 
@@ -20,12 +20,16 @@ export class RecipePuppyIntegration extends BaseIntegration {
    */
   async getRecipes(ingredients: string): Promise<IRecipePuppyResponse> {
     try {
-      const result = await this.axiosInstance.get<IRecipePuppyResponse>(`/?i=${ingredients}`)
+      const result = await this.axiosInstance.get<IRecipePuppyResponse>('/', {
+        params: {
+          i: ingredients,
+        },
+      })
 
       return result.data
     } catch (err) {
       console.error(err)
-      throw new UnavailableServiceError('Unavailable RecipePuppy service')
+      throw new RecipePuppyUnavailableServiceError()
     }
   }
 }
