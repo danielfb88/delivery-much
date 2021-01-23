@@ -1,6 +1,5 @@
 import * as HTTPStatus from 'http-status'
 import supertest from 'supertest'
-import { INGREDIENT_LIST_MOCK } from '../../src/integrations/recipe-puppy/mock/recipe-puppy-objects-mock'
 import app from '../../src/main/app'
 import '../helpers'
 
@@ -13,24 +12,6 @@ describe('Get recipe integration tests', () => {
 
   describe('GET /recipes', () => {
     const endpoint = '/recipes'
-
-    describe('Check service', () => {
-      test('Should get recipes', async done => {
-        const res = await request(app).get(`${endpoint}/?i=${INGREDIENT_LIST_MOCK}`).send()
-
-        expect(res.status).toBe(HTTPStatus.OK)
-
-        done()
-      })
-
-      test('Should validate external server error', async done => {
-        const res = await request(app).get(`${endpoint}/?i=error,error`).send()
-
-        expect(res.status).toBe(HTTPStatus.INTERNAL_SERVER_ERROR)
-
-        done()
-      })
-    })
 
     describe('Check inputs', () => {
       test('Should get BAD_REQUEST if more than three ingredients', async done => {
