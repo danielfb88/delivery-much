@@ -1,18 +1,24 @@
 import { check } from 'express-validator'
-import { IngredientError } from '../../../../errors/ingredient-error'
 
 export const getRecipeValidation = [
-  check('i').custom((value: string) => {
-    if (!value) {
-      throw new IngredientError('Empty Ingredients')
-    }
+  check('i')
+    .custom((value: string) => {
+      if (!value) {
+        throw new Error()
+      }
 
-    const listIngredients: String[] = value.split(',')
+      return true
+    })
+    .withMessage('Empty ingredients')
 
-    if (listIngredients.length > 3) {
-      throw new IngredientError('Maximun 3 ingredients')
-    }
+    .custom((value: string) => {
+      const listIngredients: String[] = value.split(',')
 
-    return true
-  }),
+      if (listIngredients.length > 3) {
+        throw new Error()
+      }
+
+      return true
+    })
+    .withMessage('Maximun ingredients'),
 ]
