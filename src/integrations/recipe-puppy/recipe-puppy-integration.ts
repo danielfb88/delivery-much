@@ -1,4 +1,5 @@
 import { BaseIntegration } from '../../base/base-integration'
+import { UnavailableServiceError } from '../../errors/unavailable-service-error'
 import { MOCK_INTEGRATIONS } from '../integrations.config'
 import { RecipePuppyIntegrationMock } from './mock/recipe-puppy-integration-mock'
 import { IRecipePuppyResponse } from './recipe-puppy-integration-types'
@@ -24,7 +25,7 @@ export class RecipePuppyIntegration extends BaseIntegration {
       return result.data
     } catch (err) {
       console.error(err)
-      throw err
+      throw new UnavailableServiceError('Unavailable RecipePuppy service')
     }
   }
 }
