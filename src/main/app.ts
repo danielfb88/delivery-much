@@ -26,7 +26,7 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(bodyParser.json())
 
-    // this.initSwagger()
+    this.initSwagger()
     this.loadRoutes()
 
     this.app.use(throw404)

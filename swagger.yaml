@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: API - Delivery Much Challenge
+  version: '1.0'
+  contact:
+    name: Delivery Much
+  description: 'Delivery Much - Challenge API'
+
+servers:
+  - url: 'http://localhost:3000'
+    description: LOCAL
+
+paths:
+  /recipes/:
+    get:
+      summary: Get recipes by ingredients
+      operationId: get-recipes
+      parameters:
+        - in: query
+          name: i
+          schema:
+            type: string
+          required: true
+          description: The ingredients separed by ','. Max. 3
+      responses:
+        '200':
+          $ref: '#/components/responses/GetRecipes'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/UnprecessableEntityError'
+      tags:
+        - Recipes
+
+components:
+
+  responses:
+    GetRecipes:
+      description: The recipes list
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              keywords:
+                type: array
+                items:
+                  type: string
+              recipes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    gif:
+                      type: string
+                    link:
+                      type: string
+                    title:
+                      type: string
+                    ingredients:
+                      type: array
+                      items:
+                        type: string
+
+    # Errors
+    ValidationError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    field:
+                      type: string
+    NotFoundError:
+      description: Not Found error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    field:
+                      type: string
+    UnprecessableEntityError:
+      description: Unprocessable Entity error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    field:
+                      type: string
