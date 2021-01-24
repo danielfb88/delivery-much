@@ -69,7 +69,7 @@ This project uses:
   - SOLID principles
     - Single-responsability Principle
     - Open-closed Principle
-    - Liskov Substiton Principle
+    - Liskov Substitution Principle
     - Interface Segregation Principle
     - Dependency Inversion Principle
 
