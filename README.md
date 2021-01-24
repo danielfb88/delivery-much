@@ -7,6 +7,12 @@ $ npm i
 ```
 
 # Step 2
+# Environment vars
+- Copy the `.env.example` file and rename to `.env`
+- Set `GIPHY_API_KEY` with your Giphy api key
+- You don't need to change the others env variables
+
+# Step 3
 ## Running tests locally
 ```bash
 $ npm test
@@ -18,7 +24,7 @@ $ npm test
 $ npm run docker:test
 ```
 
-# Step 3
+# Step 4
 ## Running locally
 ```bash
 $ npm run dev
@@ -30,7 +36,7 @@ $ npm run dev
 $ npm run docker:dev
 ```
 
-# Step 4
+# Step 5
 ## Sending requests
 ```bash
 $ curl --location --request GET 'http://localhost:3000/recipes/?i=tomato,onion,cheese'
@@ -47,7 +53,6 @@ Swagger documentation is available in:
 ```
 http://localhost:3000/docs
 ```
-
 
 # Techinical specifications
 This project uses:
