@@ -10,6 +10,6 @@ export class GiphyIntegrationMock implements IMockIntegration {
     const mockAdapter = new MockAdapter(axiosInstance)
 
     /* Get Gif */
-    mockAdapter.onGet('/').reply(200, getGiphyResponseMock())
+    mockAdapter.onGet('/random').reply(200, getGiphyResponseMock())
   }
 }

@@ -10,6 +10,8 @@ module.exports = {
     '/src/main',
     'server.ts',
     'src/errors/database-connection-error.ts',
+    'src/integrations/',
+    'src/errors/',
   ],
   coverageReporters: ['json-summary', 'lcov', 'text'],
   coverageThreshold: {
