@@ -1,3 +1,3 @@
 export function sanitizeText(text: string): string {
-  return text.replace(/\n|\r/g, '')
+  return text.replace(/\n|\t|\r/g, '')
 }
