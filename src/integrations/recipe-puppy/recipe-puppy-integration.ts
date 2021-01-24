@@ -1,6 +1,6 @@
 import { BaseIntegration } from '../../base/base-integration'
 import { MOCK_INTEGRATIONS } from '../integrations.config'
-import { RecipePuppyUnavailableServiceError } from './errors/giphy-unavailable-service-error'
+import { RecipePuppyUnavailableServiceError } from './errors/recipe-puppy-unavailable-service-error'
 import { RecipePuppyIntegrationMock } from './mock/recipe-puppy-integration-mock'
 import { IRecipePuppyResponse } from './recipe-puppy-integration-types'
 
