@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node-dev -r dotenv/config -P tsconfig.json server.ts",
-    "debug": "export NODE_ENV=development && nodemon server.ts --inspect=0.0.0.0",
+    "docker:dev": "docker-compose up --remove-orphans",
     "test": "jest --setupFiles dotenv/config -w9 --detectOpenHandles",
+    "docker:test": "docker-compose run --rm --service-ports delivery-much npm run test",
+    "debug": "export NODE_ENV=development && nodemon server.ts --inspect=0.0.0.0",
     "eslint:fix": "eslint --fix '**/*.{t,j}s'",
-    "eslint:check": "eslint '**/*.{t,j}s'",
-    "docker:dev": "docker-compose run --rm --service-ports delivery-much npm run dev",
-    "mongo:start": "docker run -p 27017:27017 --name mongodb -e AUTH=no -d mongo",
-    "mongo:down": "docker stop mongodb && docker rm mongodb"
+    "eslint:check": "eslint '**/*.{t,j}s'"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,6 @@
     "@types/express": "^4.17.11",
     "@types/express-validator": "^3.0.0",
     "@types/jest": "^26.0.20",
-    "@types/mongoose": "^5.10.3",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.22",
     "@types/supertest": "^2.0.10",
@@ -70,7 +68,6 @@
     "express-validator": "^6.9.2",
     "faker": "^5.1.0",
     "http-status": "^1.5.0",
-    "mongoose": "^5.11.13",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.1.6",
     "typescript": "^4.1.3",
