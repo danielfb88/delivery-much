@@ -9,7 +9,6 @@ module.exports = {
     '/node_modules/',
     '/src/main',
     'server.ts',
-    'src/errors/database-connection-error.ts',
     'src/integrations/',
     'src/errors/',
   ],

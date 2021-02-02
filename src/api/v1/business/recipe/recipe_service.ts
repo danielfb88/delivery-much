@@ -12,8 +12,9 @@ export default class RecipeService {
   }
 
   async getRecipeList(recipePuppyResults: IRecipePuppyResult[]): Promise<IRecipe[]> {
-    const listRecipe = []
-    for (const result of recipePuppyResults) {
+    const listRecipe: IRecipe[] = []
+
+    const promise = recipePuppyResults.map(async result => {
       const title = sanitizeText(result.title)
       const giphyResponse = await this.giphyIntegration.getGif(title)
 
@@ -26,7 +27,8 @@ export default class RecipeService {
           .map(ingredient => ingredient.trim())
           .sort((a, b) => a.localeCompare(b)),
       })
-    }
+    })
+    await Promise.all(promise)
 
     return listRecipe
   }
